@@ -1,6 +1,7 @@
 ---
 - hosts: all
   become: yes
+  gather_facts: yes
   tasks:
   - name: I want to install webserver
     apt:
@@ -14,5 +15,18 @@
      name: apache2
      state: started
     when: ansible_os_family=="Debian"
+
+  - name: I want to install webserver
+    apt:
+     name: httpd
+     state: present 
+    when: ansible_os_family=="RedHat"
+
+  - name: I want to start the server
+    service:
+     name: httpd
+     state: started
+    when: ansible_os_family=="RedHat"
+
  
   
