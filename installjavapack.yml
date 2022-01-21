@@ -6,8 +6,11 @@
     apt:
     - name: "{{javaubuntu}}"
       state: present
-  
+    when: ansible_os_family=="Debian"
+
+    
   - name: I want to install java pack on redhat node
     yum:
     - name: "{{javaredhat}}"
       state: present
+    when: ansible_os_family=="RedHat"
