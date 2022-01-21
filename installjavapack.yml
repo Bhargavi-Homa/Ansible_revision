@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+  - name: I want to install java pack on ubuntu node
+    apt:
+    - name: "{{javaubuntu}}"
+      state: present
+  
+  - name: I want to install java pack on redhat node
+    yum:
+    - name: "{{javaredhat}}"
+      state: present
